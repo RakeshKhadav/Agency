@@ -28,6 +28,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- Page Transition Overlay with Logo Animation -->
+    <div id="page-transition-overlay">
+        <div class="light-particles" id="particlesContainer"></div>
+        <div class="logo-animation-container">
+            <img src="assets/images/logo.png" alt="Creative Nests Logo" class="intro-logo">
+            <div class="logo-text">Creative Nests</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Header Section -->
     <div id="header-container"></div>
     
@@ -44,11 +56,6 @@
     <!-- Services Section -->
     <section id="services">
         <div id="services-container"></div>
-    </section>
-    
-    <!-- Portfolio Section (hidden but still accessible via navigation) -->
-    <section id="portfolio" style="display: none;">
-        <div id="portfolio-container"></div>
     </section>
     
     <!-- Pricing Section -->
@@ -72,6 +79,22 @@
     
     <!-- HTML Imports Script -->
     <script>
+        // Show page transition overlay when page loads
+        document.getElementById('page-transition-overlay').classList.add('active');
+        
+        // Create light particles
+        const particlesContainer = document.getElementById('particlesContainer');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 3}s`;
+            particle.style.width = `${Math.random() * 8 + 2}px`;
+            particle.style.height = particle.style.width;
+            particlesContainer.appendChild(particle);
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Helper function to load HTML sections
             async function loadHTML(id, file) {
@@ -88,15 +111,85 @@
                 }
             }
             
-            // Load all sections
-            loadHTML('header-container', 'sections/header.html');
-            loadHTML('hero-container', 'sections/hero.html');
-            loadHTML('about-container', 'sections/about.html');
-            loadHTML('services-container', 'sections/services.html');
-            loadHTML('portfolio-container', 'sections/portfolio.html');
-            loadHTML('price-container', 'sections/price.html');
-            loadHTML('contact-container', 'sections/contact.html');
-            loadHTML('footer-container', 'sections/footer.html');
+            // Start loading progress animation
+            const loadingProgress = document.querySelector('.loading-progress');
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 8 + 2; // More consistent progress
+                if (progress > 100) progress = 100;
+                loadingProgress.style.width = progress + '%';
+                
+                if (progress === 100) {
+                    clearInterval(progressInterval);
+                }
+            }, 200);
+            
+            // Load all sections (removed portfolio)
+            const loadPromises = [
+                loadHTML('header-container', 'sections/header.html'),
+                loadHTML('hero-container', 'sections/hero.html'),
+                loadHTML('about-container', 'sections/about.html'),
+                loadHTML('services-container', 'sections/services.html'),
+                loadHTML('price-container', 'sections/price.html'),
+                loadHTML('contact-container', 'sections/contact.html'),
+                loadHTML('footer-container', 'sections/footer.html')
+            ];
+            
+            // When all content is loaded, hide the overlay and trigger animations
+            Promise.all(loadPromises)
+                .then(() => {
+                    // Ensure loading bar completes
+                    loadingProgress.style.width = '100%';
+                    
+                    // Short delay to ensure DOM is fully updated and loading animation completes
+                    setTimeout(() => {
+                        // Add "complete" class to logo for exit animation
+                        document.querySelector('.logo-animation-container').classList.add('complete');
+                        
+                        // Hide loading overlay with slight delay for exit animation
+                        setTimeout(() => {
+                            document.getElementById('page-transition-overlay').classList.remove('active');
+                            
+                            // Add animation classes to sections
+                            document.querySelectorAll('section').forEach((section, index) => {
+                                section.classList.add('animate-fadeIn');
+                                section.style.animationDelay = `${0.1 * index}s`;
+                            });
+                            
+                            // Initialize animations after content is loaded
+                            if (typeof initAnimations === 'function') {
+                                initAnimations();
+                            }
+                            
+                            // Set up smooth scroll behavior for all anchor links
+                            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                                anchor.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    
+                                    // Quick flash effect on page transition
+                                    const overlay = document.getElementById('page-transition-overlay');
+                                    overlay.style.opacity = '0.1';
+                                    overlay.style.visibility = 'visible';
+                                    
+                                    setTimeout(() => {
+                                        overlay.style.opacity = '0';
+                                        overlay.style.visibility = 'hidden';
+                                        
+                                        // Smooth scroll to section
+                                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                                            behavior: 'smooth'
+                                        });
+                                    }, 300);
+                                });
+                            });
+                        }, 1000); // Increased time for exit animation
+                    }, 800); // Increased delay to show the completed animation
+                })
+                .catch(error => {
+                    console.error('Error loading page content:', error);
+                    // Hide loading overlay even if there was an error
+                    document.getElementById('page-transition-overlay').classList.remove('active');
+                });
         });
     </script>
 </body>

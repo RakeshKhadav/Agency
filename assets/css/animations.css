@@ -1,0 +1,470 @@
+/* Animations CSS for Creative Nests Website */
+
+/* ===== Keyframe Animations ===== */
+
+/* Floating animation for hero image and shapes */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes floatReverse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
+}
+
+/* Pulse effect for CTA buttons */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 5px 15px rgba(94, 23, 235, 0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 10px 25px rgba(94, 23, 235, 0.4); }
+    100% { transform: scale(1); box-shadow: 0 5px 15px rgba(94, 23, 235, 0.2); }
+}
+
+/* Gradient shift for text-gradient elements */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Shimmer effect for cards */
+@keyframes shimmer {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Spinning loader animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide up animation */
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Scale up animation */
+@keyframes scaleUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Blur in animation */
+@keyframes blurIn {
+    from { filter: blur(20px); opacity: 0; }
+    to { filter: blur(0); opacity: 1; }
+}
+
+/* ===== Applied Animations ===== */
+
+/* Hero section animations */
+.hero-image img {
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-shapes .shape-1 {
+    animation: floatReverse 7s ease-in-out infinite;
+}
+
+.hero-shapes .shape-2 {
+    animation: float 9s ease-in-out infinite 1s;
+}
+
+.hero-shapes .shape-3 {
+    animation: floatReverse 8s ease-in-out infinite 0.5s;
+}
+
+/* Animated gradient text */
+.text-gradient {
+    background-size: 200% 200%;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+}
+
+/* Pulsing animation for primary buttons on hover */
+.btn-primary:hover {
+    animation: pulse 2s infinite;
+}
+
+/* Service icon animations */
+.service-icon {
+    transition: all 0.5s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(94, 23, 235, 0.2);
+}
+
+/* Shimmer effect on featured elements */
+.pricing-card.popular::before,
+.experience-badge::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shimmer 10s infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Team member hover animation */
+.team-member {
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member .member-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 60%, rgba(94, 23, 235, 0.7));
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.team-member:hover .member-image::before {
+    opacity: 0.7;
+}
+
+/* Contact form animations */
+.contact-form .form-group {
+    transition: all 0.3s ease;
+}
+
+.contact-form .form-group:focus-within {
+    transform: translateY(-5px);
+}
+
+.contact-form input,
+.contact-form textarea {
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    box-shadow: 0 5px 15px rgba(94, 23, 235, 0.1);
+}
+
+/* Nav link hover effect */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Logo animation */
+.logo {
+    transition: all 0.3s ease;
+}
+
+.logo:hover img {
+    animation: bounce 1s ease;
+}
+
+/* Social icon hover effects */
+.social-icon, .member-social a {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover, .member-social a:hover {
+    transform: translateY(-5px) rotate(8deg);
+    box-shadow: 0 5px 15px rgba(94, 23, 235, 0.2);
+}
+
+/* Price toggle animation */
+.slider:before {
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Feature list animations */
+.service-features li,
+.pricing-features li {
+    transition: all 0.3s ease;
+}
+
+.service-features li:hover,
+.pricing-features li:hover {
+    transform: translateX(5px);
+    color: var(--primary-color);
+}
+
+/* Page loading animation */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    z-index: 9999;
+    transform-origin: bottom;
+    animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* Animation classes that can be applied with JavaScript */
+.animate-fadeIn { animation: fadeIn 1s forwards; }
+.animate-slideUp { animation: slideUp 1s forwards; }
+.animate-slideInLeft { animation: slideInLeft 1s forwards; }
+.animate-slideInRight { animation: slideInRight 1s forwards; }
+.animate-scaleUp { animation: scaleUp 1s forwards; }
+.animate-bounce { animation: bounce 1s forwards; }
+.animate-rotate { animation: rotate 1s forwards; }
+.animate-blurIn { animation: blurIn 1s forwards; }
+
+/* Animation delay classes */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* Page transition overlay */
+#page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#page-transition-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.logo-animation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.6s ease;
+}
+
+.logo-animation-container.complete {
+    transform: scale(1.5);
+    opacity: 0;
+}
+
+.intro-logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: scale(0.3);
+    animation: logoZoomIn 1.2s cubic-bezier(0.26, 1.36, 0.65, 1.31) forwards;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes logoZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-10deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(5deg);
+    }
+    75% {
+        transform: scale(0.95) rotate(-2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ffffff, #f5f5f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: textReveal 1s ease forwards 0.5s;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loading-bar {
+    width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards 0.8s;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.loading-progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.8));
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* Background Gradient Animation */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#page-transition-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+                var(--accent-color) 0%, 
+                var(--primary-color) 25%, 
+                #ff4e50 50%, 
+                var(--primary-color) 75%, 
+                var(--accent-color) 100%);
+    background-size: 400% 400%;
+    opacity: 0.8;
+    animation: gradientAnimation 8s ease infinite;
+    z-index: -1;
+}
+
+/* Light particles effect */
+.light-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particleFade 3s ease-in-out infinite;
+}
+
+@keyframes particleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.5);
+    }
+}
