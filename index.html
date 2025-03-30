@@ -115,14 +115,14 @@
             const loadingProgress = document.querySelector('.loading-progress');
             let progress = 0;
             const progressInterval = setInterval(() => {
-                progress += Math.random() * 8 + 2; // More consistent progress
+                progress += Math.random() * 6 + 1; // More gentle progress increment
                 if (progress > 100) progress = 100;
                 loadingProgress.style.width = progress + '%';
                 
                 if (progress === 100) {
                     clearInterval(progressInterval);
                 }
-            }, 200);
+            }, 150);
             
             // Load all sections (removed portfolio)
             const loadPromises = [
@@ -182,8 +182,8 @@
                                     }, 300);
                                 });
                             });
-                        }, 1000); // Increased time for exit animation
-                    }, 800); // Increased delay to show the completed animation
+                        }, 800); // Time for exit animation
+                    }, 1200); // Increased delay to show the completed animation
                 })
                 .catch(error => {
                     console.error('Error loading page content:', error);
