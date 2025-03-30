@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative Nests - Digital Agency specializing in UI/UX design, web development, and digital marketing solutions.">
+    <title>Creative Nests | Digital Agency</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Stylesheet (imports all other CSS files) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Animation Stylesheet -->
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- GSAP for animations (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <div id="header-container"></div>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div id="hero-container"></div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div id="about-container"></div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services">
+        <div id="services-container"></div>
+    </section>
+    
+    <!-- Portfolio Section (hidden but still accessible via navigation) -->
+    <section id="portfolio" style="display: none;">
+        <div id="portfolio-container"></div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section id="price">
+        <div id="price-container"></div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div id="contact-container"></div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div id="footer-container"></div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/animations.js"></script>
+    
+    <!-- HTML Imports Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Helper function to load HTML sections
+            async function loadHTML(id, file) {
+                const container = document.getElementById(id);
+                try {
+                    const response = await fetch(file);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const html = await response.text();
+                    container.innerHTML = html;
+                } catch (error) {
+                    console.error(`Could not load ${file}: ${error}`);
+                }
+            }
+            
+            // Load all sections
+            loadHTML('header-container', 'sections/header.html');
+            loadHTML('hero-container', 'sections/hero.html');
+            loadHTML('about-container', 'sections/about.html');
+            loadHTML('services-container', 'sections/services.html');
+            loadHTML('portfolio-container', 'sections/portfolio.html');
+            loadHTML('price-container', 'sections/price.html');
+            loadHTML('contact-container', 'sections/contact.html');
+            loadHTML('footer-container', 'sections/footer.html');
+        });
+    </script>
+</body>
+</html>

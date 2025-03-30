@@ -1,0 +1,528 @@
+/* Responsive Styles for Creative Nests Website */
+
+/* Large Devices (992px and below) */
+@media (max-width: 992px) {
+    /* Header responsive styles */
+    .header {
+        width: 95%;
+    }
+    
+    .header-wrapper {
+        padding: 1rem 1.2rem;
+    }
+    
+    /* Mobile navigation as right sidebar */
+    .navigation {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--header-bg);
+        background: linear-gradient(135deg, rgba(255, 138, 71, 0.05), rgba(94, 23, 235, 0.1));
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+        margin: 0;
+        padding: 80px 0 30px;
+        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow-y: auto;
+        z-index: 999;
+    }
+    
+    .navigation.active {
+        right: 0;
+    }
+    
+    .navigation .nav-menu {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        align-items: flex-start;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 12px 30px;
+        width: 100%;
+        font-size: 16px;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+        text-align: left;
+    }
+    
+    .navigation.active .nav-link {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: calc(0.07s * var(--item-index, 0));
+    }
+    
+    .navigation li {
+        width: 100%;
+    }
+    
+    /* Hamburger icon styling */
+    .mobile-menu-toggle {
+        display: flex;
+        z-index: 1001;
+        padding: 10px;
+        margin-right: -10px;
+    }
+    
+    /* Button adjustments for mobile */
+    .header-buttons .btn-primary {
+        padding: 0.55rem 1.2rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        margin-right: 5px;
+    }
+    
+    /* Hide sidebar close button */
+    .sidebar-close {
+        display: none;
+    }
+    
+    /* Section padding adjustments */
+    section {
+        padding: var(--spacing-md) 0;
+    }
+    
+    /* Hero section responsive styles */
+    .hero-section {
+        padding: 150px 0 80px;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-text {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-image {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    
+    .hero-shapes .shape {
+        transform: scale(0.8);
+    }
+    
+    .clients-logos {
+        gap: 2rem;
+    }
+    
+    /* About section responsive styles */
+    .about-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .experience-badge {
+        bottom: -20px;
+        right: 20px;
+        padding: 1.2rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Services section responsive styles */
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .services-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 2rem;
+        gap: 1.5rem;
+    }
+    
+    .cta-content {
+        max-width: 100%;
+    }
+    
+    /* Pricing section responsive styles */
+    .pricing-cards {
+        gap: 1.5rem;
+    }
+    
+    .pricing-card {
+        min-width: 280px;
+        padding: 2.5rem 2rem;
+    }
+    
+    .pricing-card.popular {
+        transform: scale(1.03);
+    }
+    
+    .pricing-card.popular:hover {
+        transform: scale(1.03) translateY(-10px);
+    }
+    
+    .pricing-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 2rem;
+        gap: 1.5rem;
+    }
+    
+    .cta-content {
+        max-width: 100%;
+    }
+}
+
+/* Medium Devices (768px and below) */
+@media (max-width: 768px) {
+    /* Header responsive styles */
+    .header {
+        top: 1rem;
+        width: 96%;
+    }
+    
+    .header.scrolled {
+        top: 0.5rem;
+    }
+    
+    .header-wrapper {
+        padding: 0.8rem 1rem;
+        justify-content: space-between;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+    
+    .logo span {
+        font-size: var(--text-sm);
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: var(--text-xs);
+        white-space: nowrap;
+    }
+    
+    /* Prevent button text wrapping */
+    .header-buttons .btn-primary {
+        font-size: 0.75rem;
+    }
+    
+    /* Section title adjustments */
+    .section-title {
+        font-size: var(--text-xl);
+    }
+    
+    .section-subtitle {
+        font-size: var(--text-sm);
+    }
+    
+    /* Hero section responsive styles */
+    .hero-section {
+        padding: 130px 0 60px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-image {
+        max-width: 90%;
+    }
+    
+    .hero-shapes .shape {
+        transform: scale(0.6);
+    }
+    
+    .shape-1 {
+        right: 5%;
+    }
+    
+    .shape-2 {
+        left: 2%;
+    }
+    
+    .shape-3 {
+        display: none;
+    }
+    
+    .clients-logos {
+        gap: 1.5rem;
+    }
+    
+    .client-logo img {
+        height: 25px;
+    }
+    
+    /* About section responsive styles */
+    .about-heading {
+        font-size: 1.75rem;
+    }
+    
+    .about-description {
+        font-size: 1rem;
+    }
+    
+    .experience-badge {
+        padding: 1rem;
+    }
+    
+    .experience-badge .years {
+        font-size: 2rem;
+    }
+    
+    .experience-badge .text {
+        font-size: 0.8rem;
+    }
+    
+    .feature-item {
+        align-items: center;
+    }
+    
+    .team-heading {
+        font-size: 1.75rem;
+    }
+    
+    /* Services section responsive styles */
+    .services-section .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .services-section .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .service-title {
+        font-size: 1.3rem;
+    }
+    
+    .services-cta {
+        padding: 2rem 1.5rem;
+    }
+    
+    .cta-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    /* Pricing section responsive styles */
+    .pricing-section .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .pricing-card.popular {
+        transform: scale(1);
+        order: -1;
+    }
+    
+    .pricing-card.popular:hover {
+        transform: scale(1) translateY(-10px);
+    }
+    
+    .amount {
+        font-size: 3rem;
+    }
+    
+    .discount-badge {
+        right: -20px;
+        top: -5px;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
+
+/* Small Devices (480px and below) */
+@media (max-width: 480px) {
+    /* Header responsive styles */
+    .header {
+        top: 0.7rem;
+        width: 98%;
+    }
+    
+    /* Further adjustments for very small screens */
+    .header-buttons .btn-primary {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.7rem;
+    }
+    
+    /* Make sure logo doesn't get too close to button */
+    .logo span {
+        font-size: 0.9rem;
+    }
+    
+    .logo img {
+        height: 25px;
+        margin-right: 0.5rem;
+    }
+    
+    /* Hero section responsive styles */
+    .hero-section {
+        padding: 120px 0 50px;
+        min-height: auto;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .hero-image {
+        max-width: 100%;
+    }
+    
+    .hero-shapes .shape-1,
+    .hero-shapes .shape-2 {
+        display: none;
+    }
+    
+    .clients-logos {
+        gap: 1rem;
+    }
+    
+    .client-logo img {
+        height: 20px;
+    }
+    
+    /* About section responsive styles */
+    .about-content {
+        gap: 2rem;
+    }
+    
+    .about-heading {
+        font-size: 1.5rem;
+    }
+    
+    .experience-badge {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin: -20px auto 0;
+        width: 140px;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+    }
+    
+    .feature-icon {
+        margin: 0 auto 1rem;
+    }
+    
+    /* Services section responsive styles */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        padding: 1.8rem 1.3rem;
+    }
+    
+    .services-cta {
+        padding: 1.8rem 1.3rem;
+    }
+    
+    .cta-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Pricing section responsive styles */
+    .pricing-toggle {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .discount-badge {
+        position: static;
+        margin-top: 0.5rem;
+        transform: rotate(0);
+    }
+    
+    .pricing-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .pricing-title {
+        font-size: 1.5rem;
+    }
+    
+    .amount {
+        font-size: 2.5rem;
+    }
+    
+    .pricing-cta {
+        padding: 2rem 1.5rem;
+    }
+    
+    .cta-content h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Very Small Devices (360px and below) */
+@media (max-width: 360px) {
+    .header-buttons .btn-primary {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.65rem;
+    }
+    
+    /* Option to hide logo text on extremely small screens */
+    .logo span {
+        max-width: 90px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+}

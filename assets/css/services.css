@@ -1,0 +1,251 @@
+/* Services Section Styles */
+
+.services-section {
+    position: relative;
+    padding: var(--spacing-xs) 0 0; /* Changed from var(--spacing-xs) to 0 for bottom padding */
+    background-color: var(--light);
+    overflow: hidden;
+}
+
+/* Background decoration */
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(94, 23, 235, 0.05), transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.services-section::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 138, 71, 0.05), transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Title styles - making it consistent with other sections but with its own flair */
+.services-section .section-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.services-section .section-subtitle {
+    font-size: 1.1rem;
+    max-width: 750px;
+}
+
+/* Services grid layout */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Service card styling */
+.service-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(94, 23, 235, 0.1);
+}
+
+.service-card:hover::before {
+    height: 7px;
+}
+
+/* Service icon */
+.service-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 138, 71, 0.1), rgba(94, 23, 235, 0.1));
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.service-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    filter: blur(10px);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.service-icon i {
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Service content */
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.service-description {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.service-features {
+    list-style: none;
+    margin-bottom: 0; /* Changed from 1.5rem to 0 since we're removing the Learn More link */
+}
+
+.service-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.service-features li i {
+    margin-right: 0.75rem;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+}
+
+.service-link {
+    display: none; /* Hide the Learn More links */
+}
+
+/* Services CTA section */
+.services-cta {
+    margin-top: 3rem;
+    background: linear-gradient(135deg, rgba(94, 23, 235, 0.03), rgba(255, 138, 71, 0.03));
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.services-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(94, 23, 235, 0.4), rgba(255, 138, 71, 0.4));
+    opacity: 0.03;
+    z-index: 0;
+}
+
+.cta-content {
+    max-width: 70%;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.cta-content p {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.services-cta .btn {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive adjustments - this will be combined with responsive.css */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .services-cta {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem;
+    }
+    
+    .cta-content {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-section .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-cta {
+        padding: 2rem 1.5rem;
+    }
+    
+    .cta-content h3 {
+        font-size: 1.5rem;
+    }
+}
