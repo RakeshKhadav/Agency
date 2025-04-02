@@ -19,7 +19,7 @@
     margin: 0 auto;
     z-index: 1000;
     background-color: var(--header-bg);
-    background: linear-gradient(to right, rgba(255, 138, 71, 0.6), rgba(94, 23, 235, 0.2));
+    background: linear-gradient(to right,rgba(255, 138, 71, 0.6), rgba(94, 23, 235, 0.2));
     box-shadow: 0 10px 30px var(--header-shadow);
     border-radius: 20px;
     border: 1px solid var(--header-border);
@@ -43,7 +43,7 @@
 }
 
 .logo img {
-    height: 35px;
+    height: 45px;
     margin-right: 0.75rem;
     filter: drop-shadow(0 2px 4px rgba(255, 138, 71, 0.3));
 }
@@ -175,6 +175,8 @@
     .nav-link[href="#price"]::before { content: "\f155"; } /* dollar */
     .nav-link[href="#contact"]::before { content: "\f0e0"; } /* envelope */
     
+    
+
     .navigation.active .nav-link {
         opacity: 1;
         transform: translateX(0);
