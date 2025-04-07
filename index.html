@@ -58,9 +58,19 @@
         <div id="services-container"></div>
     </section>
     
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div id="portfolio-container"></div>
+    </section>
+    
     <!-- Pricing Section -->
     <section id="price">
         <div id="price-container"></div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section id="blog">
+        <div id="blog-container"></div>
     </section>
     
     <!-- Contact Section -->
@@ -124,13 +134,15 @@
                 }
             }, 150);
             
-            // Load all sections (removed portfolio)
+            // Load all sections (added blog)
             const loadPromises = [
                 loadHTML('header-container', 'sections/header.html'),
                 loadHTML('hero-container', 'sections/hero.html'),
                 loadHTML('about-container', 'sections/about.html'),
                 loadHTML('services-container', 'sections/services.html'),
+                loadHTML('portfolio-container', 'sections/portfolio.html'),
                 loadHTML('price-container', 'sections/price.html'),
+                loadHTML('blog-container', 'sections/blog.html'),
                 loadHTML('contact-container', 'sections/contact.html'),
                 loadHTML('footer-container', 'sections/footer.html')
             ];
@@ -164,22 +176,38 @@
                             // Set up smooth scroll behavior for all anchor links
                             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                                 anchor.addEventListener('click', function(e) {
+                                    // Skip if this is a blog link, as those are handled separately
+                                    if (this.classList.contains('blog-link')) {
+                                        return;
+                                    }
+                                    
                                     e.preventDefault();
                                     
-                                    // Quick flash effect on page transition
-                                    const overlay = document.getElementById('page-transition-overlay');
-                                    overlay.style.opacity = '0.1';
-                                    overlay.style.visibility = 'visible';
-                                    
-                                    setTimeout(() => {
-                                        overlay.style.opacity = '0';
-                                        overlay.style.visibility = 'hidden';
+                                    const targetId = this.getAttribute('href');
+                                    // Only proceed if the href points to a valid selector
+                                    if (targetId && targetId.length > 1) {
+                                        // Quick flash effect on page transition
+                                        const overlay = document.getElementById('page-transition-overlay');
+                                        if (overlay) {
+                                            overlay.style.opacity = '0.1';
+                                            overlay.style.visibility = 'visible';
+                                        }
                                         
-                                        // Smooth scroll to section
-                                        document.querySelector(this.getAttribute('href')).scrollIntoView({
-                                            behavior: 'smooth'
-                                        });
-                                    }, 300);
+                                        setTimeout(() => {
+                                            if (overlay) {
+                                                overlay.style.opacity = '0';
+                                                overlay.style.visibility = 'hidden';
+                                            }
+                                            
+                                            const targetElement = document.querySelector(targetId);
+                                            
+                                            if (targetElement) {
+                                                targetElement.scrollIntoView({
+                                                    behavior: 'smooth'
+                                                });
+                                            }
+                                        }, 300);
+                                    }
                                 });
                             });
                         }, 800); // Time for exit animation

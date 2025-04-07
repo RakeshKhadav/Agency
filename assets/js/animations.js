@@ -65,6 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Footer animation
             animateFooter();
             
+            // Portfolio items animation
+            animatePortfolioItems();
+            
+            // Blog items animation
+            animateBlogItems();
+            
             // Add page transition effect for internal links
             setupPageTransitions();
         } else {
@@ -331,6 +337,76 @@ document.addEventListener('DOMContentLoaded', function() {
                 start: 'top 90%',
                 toggleActions: 'play none none none'
             }
+        });
+    }
+    
+    function animatePortfolioItems() {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        if (portfolioItems.length === 0) return;
+        
+        gsap.from(portfolioItems, {
+            opacity: 0,
+            y: 50,
+            scale: 0.9,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: 'back.out(1.7)',
+            scrollTrigger: {
+                trigger: '.portfolio-grid',
+                start: 'top 80%',
+                toggleActions: 'play none none none'
+            }
+        });
+        
+        // Staggered animation for filter buttons
+        gsap.from('.filter-btn', {
+            opacity: 0,
+            y: 20,
+            stagger: 0.1,
+            duration: 0.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.portfolio-filter',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            }
+        });
+    }
+    
+    function animateBlogItems() {
+        const blogCards = document.querySelectorAll('.blog-card');
+        if (blogCards.length === 0) return;
+        
+        gsap.from(blogCards, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.blog-grid',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            }
+        });
+        
+        // Add hover animations for blog cards
+        blogCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                gsap.to(this.querySelector('.blog-link i'), {
+                    x: 5,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                gsap.to(this.querySelector('.blog-link i'), {
+                    x: 0,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
         });
     }
     

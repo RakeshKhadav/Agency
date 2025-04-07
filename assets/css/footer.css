@@ -9,7 +9,7 @@
 /* Main Footer Area */
 .footer-main {
     padding: var(--spacing-lg) 0;
-    background: url('../images/footer-bg-pattern.png'), linear-gradient(90deg, rgba(26, 26, 46, 0.99), rgba(26, 26, 46, 0.95));
+    background: linear-gradient(90deg, rgba(26, 26, 46, 0.99), rgba(26, 26, 46, 0.95));
     background-size: cover;
     background-position: center;
     background-blend-mode: overlay;
