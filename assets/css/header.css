@@ -170,13 +170,13 @@
     }
     
     .nav-link[href="#hero"]::before { content: "\f015"; } /* home */
-    .nav-link[href="#about"]::before { content: "\f075"; } /* info-circle */
+    .nav-link[href="#about"]::before { content: "\f075"; } /* chat bubble */
     .nav-link[href="#services"]::before { content: "\f085"; } /* cogs */
+    .nav-link[href="#portfolio"]::before { content: "\f03e"; } /* image/gallery */
     .nav-link[href="#price"]::before { content: "\f155"; } /* dollar */
+    .nav-link[href="#blog"]::before { content: "\f781"; } /* blog/article */
     .nav-link[href="#contact"]::before { content: "\f0e0"; } /* envelope */
     
-    
-
     .navigation.active .nav-link {
         opacity: 1;
         transform: translateX(0);
